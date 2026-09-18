@@ -1,21 +1,36 @@
-import { Controller, Get, Post, Body } from "@nestjs/common";
+import { Controller, Get, Post, Patch, Delete, Param, Body, HttpCode } from "@nestjs/common";
+import { ConvidadosService } from "./convidados.service.js";
 import { CriarConvidadoDto } from "./dto/criar-convidado.dto.js";
 
 @Controller('convidados')
-export class ConviddadosController{
-
+export class ConvidadosController {
+    constructor(private readonly convidadosService: ConvidadosService){}
     @Get()
     listarConvidados(){
-        return['Amanda','Davi', 'Adam', 'Gabrielly', 'Yuri'];
+        return this.convidadosService.findAll();
     }
 
     @Post()
     criar(@Body() CriarConvidadoDto: CriarConvidadoDto){
-        console.log(`[PORTEIRO DIGITAL] Novo convidado recebido: ${CriarConvidadoDto.nome}`);
-
-        return {
-            mensagem: `Convidado ${CriarConvidadoDto.nome} Adicionado com sucesso!`, 
+        console.log(`[OPERADOR]: Novo convidado recebido: ${CriarConvidadoDto.nome}`);
+        
+        return{
+            mensagem: `Convidado ${CriarConvidadoDto.nome} adicionado com sucesso`,
             dados: CriarConvidadoDto,
-        };
+        }
     }
+
+
+    @Patch()
+    atualizarIdade(@Param('id') id: number, @Body('idade') idade: number){
+        console.log(`[ADMNISTRATOR]: Atualizando a idade do ID ${id}`);
+            return this.convidadosService.atualizarIdade(+id, idade);
+    }
+
+    @Delete(':id')
+    @HttpCode(204)
+    remover(@Param ('id') id:number){
+        console.log(`[ADMNISTRADOR]: Remover Convidado ID: ${id}`);
+        this.convidadosService.removerConvidado(+id);
+        }
 }
