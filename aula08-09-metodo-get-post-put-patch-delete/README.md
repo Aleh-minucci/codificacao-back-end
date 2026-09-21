@@ -114,3 +114,107 @@ NestJS
 TypeScript
 REST API
 HTTP
+
+# TESTE NO INSOMNIA
+Testes de API REST com Insomnia
+ Os testes foram realizados com os métodos HTTP GET, POST, PATCH e DELETE, utilizando a rota /convidados.
+
+Tecnologias utilizadas
+• API local
+• Insomnia
+• HTTP/REST
+• JSON
+
+Endpoint principal
+http://localhost:3000/convidados
+
+A API trabalha com dados de convidados, contendo principalmente os campos:
+{
+  "id": 1,
+  "nome": "Exemplo",
+  "idade": 18
+}
+
+1. GET — Listar convidados
+Método: GET
+URL:
+http://localhost:3000/convidados
+O método GET foi utilizado para consultar os convidados cadastrados na API.
+
+Exemplo de resposta
+
+[
+  {
+    "id": 2,
+    "nome": "Enzo",
+    "idade": 19
+  },
+  {
+    "id": 3,
+    "nome": "Jamily",
+    "idade": 20
+  },
+  {
+    "id": 4,
+    "nome": "Alessandra",
+    "idade": 18
+  },
+  {
+    "id": 5,
+    "nome": "Hudson",
+    "idade": 21
+  }
+]
+
+Status: 200 OK
+
+2. POST — Adicionar convidado
+Método: POST
+URL:
+http://localhost:3000/convidados
+No corpo da requisição foi utilizado JSON para cadastrar um novo convidado.
+Body
+{
+  "nome": "Alessandra",
+  "idade": 18
+}
+Resposta
+
+{
+  "message": "Convidado Alessandra adicionado com sucesso",
+  "dados": {
+    "nome": "Alessandra",
+    "idade": 18
+  }
+}
+Status: 201 Created
+O código 201 Created indica que um novo recurso foi criado com sucesso.
+
+3. PATCH — Atualizar convidado
+Método: PATCH
+URL:
+http://localhost:3000/convidados/5
+O PATCH foi utilizado para alterar apenas uma informação do convidado de ID 5.
+Body
+{
+  "idade": 22
+}
+Resposta
+
+{
+  "id": 5,
+  "nome": "Hudson",
+  "idade": 22
+}
+Status: 200 OK
+Nesse teste, somente a idade foi alterada. O nome e o ID permaneceram os mesmos.
+
+4. DELETE — Excluir convidado
+Método: DELETE
+URL:
+http://localhost:3000/convidados/1
+O DELETE foi utilizado para remover o convidado que possui o ID 1.
+Resposta
+Não há conteúdo no corpo da resposta.
+Status: 204 No Content
+O código 204 indica que a operação foi realizada com sucesso, mas a API não retornou conteúdo na resposta.
