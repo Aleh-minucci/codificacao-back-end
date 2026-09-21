@@ -1,0 +1,4 @@
+$kind: http-request
+url: localhost:3000/convidados/1
+method: DELETE
+order: 4229230221253705
