@@ -7,9 +7,9 @@ export class LoggerMiddleware implements NestMiddleware {
     const rota =req.originalUrl || req.url;
     console.log(`[LOG] Método: ${req.method} | Rota: ${rota}`);
 
-    if(rota.startsWith('admin')){
+    if(rota.startsWith('/admin')){
       const role = req.headers['api-key-admin'];
-      
+
       if(role !== 'administrator'){
         return res.status(403).json({
           statusCode: 403,
