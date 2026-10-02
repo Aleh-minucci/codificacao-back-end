@@ -4,11 +4,13 @@ import type { Request, Response, NextFunction } from 'express';
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
-    console.log(`[LOG] Método: ${req.method} | Rota: ${req.path}`);
+    const rota =req.originalUrl || req.url;
+    console.log(`[LOG] Método: ${req.method} | Rota: ${rota}`);
 
-    if(req.path.startsWith('admin')){
-      const role = req.headers['x-user-role'];
-      if(role !== 'supervisor'){
+    if(rota.startsWith('admin')){
+      const role = req.headers['api-key-admin'];
+      
+      if(role !== 'administrator'){
         return res.status(403).json({
           statusCode: 403,
           message: 'Acesso Negado: Privilégio de Supervisor Necessário!',
