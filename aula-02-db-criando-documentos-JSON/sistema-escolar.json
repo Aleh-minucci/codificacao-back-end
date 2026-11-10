@@ -1,0 +1,77 @@
+{
+  "sistema": "Sistema Escolar",
+  "usuarios": [
+    {
+      "nome": "Alessandra Minucci",
+      "matricula": "0002",
+      "dataNascimento": "17-05-2008",
+      "historicoEscolar": [
+        {
+          "disciplina": "Educação Física",
+          "nota": 8.7
+        },
+        {
+          "disciplina": "Artes",
+          "nota": 9.2
+        }
+      ],
+      "turma": {
+        "codigo": "T002",
+        "serie": "3º ano do Ensino Médio",
+        "turno": "Manhã",
+        "anoLetivo": 2026
+      },
+      "responsavel": {
+        "nome": "Alcilene Araújo",
+        "telefone": "96991212053",
+        "endereco": {
+          "rua": "Avenida Ivaldo Veras",
+          "numero": "245",
+          "bairro": "Central",
+          "cidade": "Macapá",
+          "estado": "Amapá",
+          "cep": "689090030"
+        }
+      }
+    }
+  ],
+  "turmas": [
+    {
+      "codigo": "T002",
+      "anoLetivo": 2026,
+      "serie": "3º ano do Ensino Médio",
+      "turno": "Manhã",
+      "numeroSala": "08",
+      "alunos": [
+        "0002"
+      ]
+    }
+  ],
+  "funcionarios": [
+    {
+      "matricula": "F005",
+      "nome": "Fernanda Ribeiro",
+      "cargo": "Professora",
+      "disciplina": "Artes",
+      "telefone": "96982345678"
+    },
+    {
+      "matricula": "F006",
+      "nome": "Eduardo Martins",
+      "cargo": "Porteiro",
+      "telefone": "96983456789"
+    },
+    {
+      "matricula": "F007",
+      "nome": "Patrícia Nascimento",
+      "cargo": "Cozinheira",
+      "telefone": "96984567890"
+    },
+    {
+      "matricula": "F008",
+      "nome": "Rogério Lima",
+      "cargo": "Auxiliar de limpeza",
+      "telefone": "96985678901"
+    }
+  ]
+}

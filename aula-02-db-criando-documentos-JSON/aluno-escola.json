@@ -1,0 +1,19 @@
+{
+    "nome": "Lucas Almeida",
+    "nomeSocial": "",
+    "matricula": "0001",
+    "dataNAscimento": "2002-05-14",
+    "curso": "Desenvolvimento de Sistemas",
+    "disciplinas": [
+        {"nome": "Banco de Dados", "nota": 9.5},
+        {"nome": "Desenvolvimento WEB", "nota": 8.8}
+    ],
+    "endereco": {
+        "rua": "Rua das Flores",
+        "numero": "123",
+        "bairro": "Jardin Felicidade", 
+        "cidade": "Macapá",
+        "estado": "Amapá",
+        "cep": "689090030"
+    }
+}
