@@ -14,18 +14,36 @@ export class AlunoService {
         private alunoModel: Model<AlunoDocument>
     ) {}
 
-    // POST - Criar aluno
+    //! POST - Criar aluno
     async create(createAlunoDto: CreateAlunoDto): Promise<Aluno> {
         const createdAluno = new this.alunoModel(createAlunoDto);
         return createdAluno.save();
     }
 
-    // GET - Consultar todos os alunos
-    async findAll(): Promise<Aluno[]> {
-        return this.alunoModel.find().exec();
-    }
+    //! GET - Consultar todos os alunos
+    async findAllPage(page: number, limit: number){
 
-    // GET - Consultar aluno pelo ID
+        const skip = (page - 1) * limit;
+        const [data, total] = await Promise.all([
+            this.alunoModel.find().skip(skip).limit(limit).exec(),
+            this.alunoModel.countDocuments().exec()
+        ]);
+
+        return {
+            data,
+            meta: {
+                total,
+                page,
+                limit,
+                totalPages: Math.ceil(total / limit),
+            },
+        };
+    }
+//async findAll(): Promise<Aluno[]> {
+       // return this.alunoModel.find().exec();
+      //  }
+
+    //! GET - Consultar aluno pelo ID
     async findOne(id: string): Promise<Aluno> {
         const aluno = await this.alunoModel.findById(id).exec();
 
@@ -37,8 +55,9 @@ export class AlunoService {
 
         return aluno;
     }
+    
 
-    // PATCH - Atualizar aluno
+    //! PATCH - Atualizar aluno
     async update(
         id: string,
         uptadateAlunoDto: UptadateAlunoDto
