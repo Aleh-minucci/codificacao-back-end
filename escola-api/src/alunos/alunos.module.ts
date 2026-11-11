@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { AlunoService } from "./alunos.service.js";
+import { AlunosService } from "./alunos.service.js";
 import { AlunosController } from "./alunos.controller.js";
 import { Aluno, AlunoSchema } from "./schemas/aluno.shema.js";
 
@@ -10,7 +10,7 @@ import { Aluno, AlunoSchema } from "./schemas/aluno.shema.js";
     }        
     ])],
     controllers:[AlunosController],
-    providers:[AlunoService],
+    providers:[AlunosService],
 
 })
 
