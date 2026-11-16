@@ -93,8 +93,18 @@ async update(id: string, updateAlunoDto: UpdateAlunoDto): Promise<Aluno | null> 
 
 } //!PATCH
 async remove(id: string): Promise<Aluno | null> {
-    return this.alunoModel.findByIdAndDelete(id).exec();
+    const alunoRemovido = await this.alunoModel.findByIdAndUpdate(id,
+      { ativo: false},
+      { new: true }).exec();
+    if (!alunoRemovido) {
+      throw new NotFoundException(`Aluno com ID ${id} não encontrado.`);
+    } 
+    return alunoRemovido;
 
 } //!DELETE
 //!CURD
-  }
+
+async restore(id: string): Promise<Aluno | null> {
+  return this.alunoModel.findByIdAndUpdate(id, { deleted: false }, { new: true }).exec();
+}
+}

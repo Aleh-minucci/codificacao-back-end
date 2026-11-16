@@ -180,4 +180,27 @@ export class AlunosController {
     remove(@Param('id') id: string) {
         return this.alunoService.remove(id);
     }
+
+
+
+    @Patch(':id/restore')
+    @ApiOperation({
+        summary: 'Restaura aluno específico pelo _id.',
+    })
+    @ApiResponse({
+        status: 200,
+        description: 'Aluno restaurado com sucesso.'
+    })
+    @ApiResponse({
+        status: 404,
+        description: 'Aluno não encontrado pelo _id.'
+    })
+    @ApiResponse({
+        status: 500,
+        description: 'Erro interno do servidor ou indisponível.'
+    })
+        restore(@Param('id') id: string) {
+        return this.alunoService.restore(id);
+    }
+
 }
